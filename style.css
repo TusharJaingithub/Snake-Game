@@ -1,0 +1,220 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --bg-primary-color: #0c0c0c;
+    --bg-food-color:#ff3b3b;
+    --bg-modal-color: rgba(53, 53, 53, 0.55);
+
+    --text-primary-color: #f0f0f0;
+
+    --padding-xs: 0.5rem;
+    --padding-sm: 1rem;
+    --padding-md: 2rem;
+    --padding-lg: 3rem;
+
+    --border-primary-color:#333333;
+
+    --border-radius-xs:0.5rem;
+    --border-radius-sm: 1rem;
+    --border-radius-md: 1.5rem;
+}
+
+html, body{
+    height: 100%;
+    width: 100%;
+    background-color: var(--bg-primary-color);
+    color: var(--text-primary-color);
+    font-family: system-ui, sans-serif;
+}
+
+main{
+    width: 100%;
+    height: 100%;
+    padding: var(--padding-md);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section{
+    width: min(100%, 900px);
+    height: min(100%, 700px);
+    padding: var(--padding-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-md);
+
+    border: 1px solid var(--border-primary-color);
+    border-radius: var(--border-radius-md);
+}
+
+section .infos{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.info{
+    flex: 1;
+    padding: var(--padding-xs) var(--padding-sm);
+    border: 1px solid var(--border-primary-color);
+    border-radius: var(--border-radius-xs);
+    text-align: center;
+}
+
+.info h3{
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.board{
+    width: 100%;
+    flex: 1;
+    background-color: var(--bg-primary-color);
+    border: 1px solid var(--border-primary-color);
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(50px, 1fr));
+}
+
+.block{
+    border: 1px solid #222;
+}
+
+/* ============================= */
+/* REALISTIC SNAKE DESIGN */
+/* ============================= */
+
+/* Snake Body */
+.fill{
+    background-color: #22c55e;
+    border-radius: 14px;
+    box-shadow: inset 0px 0px 6px rgba(0,0,0,0.5);
+}
+
+/* Snake Head */
+.head{
+    background-color: #16a34a;
+    border-radius: 16px;
+    position: relative;
+    box-shadow: inset 0px 0px 8px rgba(0,0,0,0.6);
+}
+
+/* Eyes */
+.head::before,
+.head::after{
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background: black;
+    border-radius: 50%;
+    top: 12px;
+}
+
+.head::before{
+    left: 10px;
+}
+
+.head::after{
+    right: 10px;
+}
+
+/* ============================= */
+/* REALISTIC FOOD (APPLE STYLE) */
+/* ============================= */
+
+.food{
+    background-color: var(--bg-food-color);
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.7);
+}
+
+/* Leaf */
+.food::before{
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 6px;
+    background: #22c55e;
+    top: -4px;
+    left: 18px;
+    border-radius: 10px;
+    transform: rotate(-25deg);
+}
+
+/* Shine */
+.food::after{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: rgba(255,255,255,0.7);
+    top: 10px;
+    left: 10px;
+    border-radius: 50%;
+}
+
+/* ============================= */
+/* MODAL */
+/* ============================= */
+
+.modal{
+    position: fixed;
+    inset: 0;
+    background-color: var(--bg-modal-color);
+    backdrop-filter: blur(4px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal .start-game,
+.modal .game-over{
+    padding: var(--padding-lg);
+    background-color: var(--bg-primary-color);
+    border: 1px solid var(--border-primary-color);
+    border-radius: var(--border-radius-md);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-md);
+    text-align: center;
+}
+
+.modal h3{
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+/* Button */
+.btn{
+    padding: var(--padding-xs) var(--padding-md);
+    border:none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: white;
+    color: black;
+    transition: all 0.3s ease;
+}
+
+.btn:hover{
+    transform: scale(1.05);
+}
+
+.modal .game-over{
+    display: none;
+}
